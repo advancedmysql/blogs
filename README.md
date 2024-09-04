@@ -10,7 +10,7 @@ Extract some insightful technical points from the book "The Art of Problem-Solvi
 
 [The Significant Differences Between BenchmarkSQL and SysBench](sysbench_vs_benchmarksql.md)
 
-[Profile-guided optimization](PGO.md)
+[Profile-guided optimization](pgo.md)
 
 [Performance Degradation in Query Execution Plans](performance_degradation.md)
 
