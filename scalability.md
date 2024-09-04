@@ -1,4 +1,4 @@
-# How can the scalability of MySQL be improved for BenchmarkSQL TPC-C testing?
+# How can the scalability of MySQL be improved？
 
 ##  Current state of MySQL 5.7
 
