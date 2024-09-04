@@ -1,5 +1,5 @@
 # blogs
-Extract some insightful technical points from the book.
+Extract some insightful technical points from the book "The Art of Problem-Solving in Software Engineering:How to Make MySQL Better".
 
 
 
