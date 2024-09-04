@@ -4,7 +4,7 @@ Extract some insightful technical points from the book "The Art of Problem-Solvi
 
 
 # Table of Contents
-[How can the scalability of MySQL be improved for BenchmarkSQL TPC-C testing?](scalability.md)
+[How can the scalability of MySQL be improved](scalability.md)
 
 [How to explain why Repeatable Read surprisingly outperforms Read Committed?](isolation.md)
 
@@ -20,3 +20,4 @@ Extract some insightful technical points from the book "The Art of Problem-Solvi
 
 [Evaluating Performance Gains in MySQL Lock Scheduling Algorithms](cats.md)
 
+[The Powerful Impact of Static Arrays in MySQL Modifications](static_array.md)
