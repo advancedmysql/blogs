@@ -6,7 +6,7 @@ First, use SysBench's standard read/write tests to evaluate the optimization of 
 
 <img src="images/image-20240829092940314.png" alt="image-20240829092940314" style="zoom:150%;" />
 
-Figure 5-21. Comparison of SysBench read-write tests before and after lock-sys optimization.
+Figure 1. Comparison of SysBench read-write tests before and after lock-sys optimization.
 
 From the figure, it can be observed that after optimization, the overall performance of the SysBench tests has actually decreased.
 
@@ -14,7 +14,7 @@ Next, using BenchmarkSQL to test this optimization, the results are shown in the
 
 <img src="images/image-20240829092959775.png" alt="image-20240829092959775" style="zoom:150%;" />
 
-Figure 5-22. Comparison of BenchmarkSQL tests before and after lock-sys optimization.
+Figure 2. Comparison of BenchmarkSQL tests before and after lock-sys optimization.
 
 From the figure, it can be seen that the results of BenchmarkSQL's TPC-C test indicate that the lock-sys optimization is effective. Why does such a significant difference occur? Let's analyze the differences in characteristics between these testing tools to understand why their tests differ.
 
@@ -32,5 +32,6 @@ It is worth noting that the main basis for performance testing and comparison in
 
 ## References：
 
-1. Bin Wang (2024). The Art of Problem-Solving in Software Engineering:How to Make MySQL Better.
-2. R. N. Avula and C. Zou. Performance evaluation of TPC-C benchmark on various cloud providers, Proc. 11th IEEE Annu. Ubiquitous Comput. Electron. Mobile Commun. Conf. (UEMCON), pp. 226-233, Oct. 2020.
+[1] Bin Wang (2024). The Art of Problem-Solving in Software Engineering:How to Make MySQL Better.
+
+[2] R. N. Avula and C. Zou. Performance evaluation of TPC-C benchmark on various cloud providers, Proc. 11th IEEE Annu. Ubiquitous Comput. Electron. Mobile Commun. Conf. (UEMCON), pp. 226-233, Oct. 2020.

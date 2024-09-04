@@ -196,9 +196,13 @@ Overall, it is entirely feasible for MySQL to maintain performance without colla
 
 # References：
 
-1. Bin Wang (2024). The Art of Problem-Solving in Software Engineering:How to Make MySQL Better.
-2. https://dev.mysql.com/blog-archive/the-new-mysql-thread-pool/.
-3. Paweł Olchawa. 2018. MySQL 8.0: New Lock free, scalable WAL design. dev.mysql.com/blog-archive.
-4. Xiangyao Yu. An evaluation of concurrency control with one thousand cores. PhD thesis, Massachusetts Institute of Technology, 2015.
-5. https://dev.mysql.com/doc/refman/8.0/en/.
+[1] Bin Wang (2024). The Art of Problem-Solving in Software Engineering:How to Make MySQL Better.
+
+[2] https://dev.mysql.com/blog-archive/the-new-mysql-thread-pool/.
+
+[3] Paweł Olchawa. 2018. MySQL 8.0: New Lock free, scalable WAL design. dev.mysql.com/blog-archive.
+
+[4] Xiangyao Yu. An evaluation of concurrency control with one thousand cores. PhD thesis, Massachusetts Institute of Technology, 2015.
+
+[5] https://dev.mysql.com/doc/refman/8.0/en/.
 

@@ -10,7 +10,7 @@ The figure below presents results from the SysBench uniform test, where concurre
 
 <img src="images/image-20240829151823981.png" alt="image-20240829151823981" style="zoom:150%;" />
 
-Figure 2-8. SysBench read-write performance comparison with low conflicts under different isolation levels.
+Figure 1. SysBench read-write performance comparison with low conflicts under different isolation levels.
 
 Below 400 concurrency, the differences are minor because of fewer conflicts in the uniform test. With fewer conflicts, the impact of lock strategies under different transaction isolation levels is reduced. However, Read Committed is mainly constrained by frequent acquisition of MVCC ReadView, resulting in performance inferior to Repeatable Read.
 
@@ -18,7 +18,7 @@ Continuing with the SysBench test under pareto distribution conditions, specific
 
 <img src="images/image-20240829081950365.png" alt="image-20240829081950365" style="zoom:150%;" />
 
-Figure 2-9. SysBench read-write performance comparison with high conflicts under different isolation levels.
+Figure 2. SysBench read-write performance comparison with high conflicts under different isolation levels.
 
 The figure clearly illustrates that in scenarios with significant conflicts, performance differences due to lock strategies under different transaction isolation levels are pronounced. As anticipated, higher transaction isolation levels generally exhibit lower throughput, particularly under severe conflict conditions.
 
@@ -28,5 +28,6 @@ In summary, in low-conflict tests like SysBench uniform, the overhead of MVCC Re
 
 ## References：
 
-1. https://dev.mysql.com/doc/refman/8.0/en/.
-2. Bin Wang (2024). The Art of Problem-Solving in Software Engineering:How to Make MySQL Better.
+[1] https://dev.mysql.com/doc/refman/8.0/en/.
+
+[2] Bin Wang (2024). The Art of Problem-Solving in Software Engineering:How to Make MySQL Better.
