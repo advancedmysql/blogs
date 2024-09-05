@@ -5,7 +5,7 @@ Extract some insightful technical points from the book "The Art of Problem-Solvi
 
 # Professional Journey:
 
-[A Brief Overview of My Professional Journey](professional_journey)
+[A Brief Overview of My Professional Journey](professional_journey.md)
 
 
 
