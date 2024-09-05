@@ -22,6 +22,8 @@ Extract some insightful technical points from the book "The Art of Problem-Solvi
 
 [The Powerful Impact of Static Arrays in MySQL Modifications](static_array.md)
 
+[Lack of Durability: Paxos Not Committed to Disk](paxos_log.md)
+
 
 
 # Book Link:
