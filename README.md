@@ -4,6 +4,10 @@ Extract some insightful technical points from the book "The Art of Problem-Solvi
 
 
 # Table of Contents
+[A Brief Overview of My Professional Journey](professional_journey)
+
+
+
 [How can the scalability of MySQL be improved](scalability.md)
 
 [How to explain why Repeatable Read surprisingly outperforms Read Committed?](isolation.md)
@@ -23,6 +27,8 @@ Extract some insightful technical points from the book "The Art of Problem-Solvi
 [The Powerful Impact of Static Arrays in MySQL Modifications](static_array.md)
 
 [Lack of Durability: Paxos Not Committed to Disk](paxos_log.md)
+
+
 
 
 
