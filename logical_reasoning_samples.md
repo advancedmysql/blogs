@@ -12,7 +12,7 @@ Since retransmission is suspected, it's essential to understand its nature. Retr
 
 ![](images/6670e70b6d5f0f5152f643c153d13487.png)
 
-Figure 4-46. Packet capture screenshot with time information added.
+Figure 2. Packet capture screenshot with time information added.
 
 When analyzing network packets, timestamp information is crucial for accurate logical reasoning. A time difference in the microsecond range between two duplicate packets suggests either a timeout retransmission or duplicate packet capture. In a typical LAN environment with a Round-trip Time (RTT) of around 100 microseconds, where TCP retransmissions require at least one RTT, a retransmission occurring at just 1/100th of the RTT likely indicates duplicate packet capture rather than an actual timeout retransmission.
 
@@ -44,7 +44,7 @@ The packet capture files are numerous. First, ask the developers to provide the 
 
 ![](images/4309ffee12d2eed2548845d1e1d2e848.png)
 
-Figure 2. Key packet information captured for problem resolution.
+Figure 3. Key packet information captured for problem resolution.
 
 From the packet capture content above (captured from the server), it appears that the SQL query was sent at 3 AM. The MySQL database middleware took 630 seconds (03:10:30.899249-03:00:00.353157) to return the SQL response to the client, indicating that the MySQL database middleware did indeed respond to the SQL query. However, just 238 microseconds later (03:10:30.899487-03:10:30.899249), the server's TCP layer received a reset packet, which is suspiciously quick. It's important to note that this reset packet cannot be immediately assumed to be from the client.
 
@@ -56,7 +56,7 @@ Who sent the reset, then? The primary suspect is Amazon's cloud environment. Bas
 
 ![图片](images/5c6f81f69eac7f61744ba3bc035b29e7.png)
 
-Figure 3. Final response from Amazon customer service.
+Figure 4. Final response from Amazon customer service.
 
 Customer service's response aligns with the analysis results, indicating that Amazon's ELB (Elastic Load Balancer, similar to LVS) forcibly terminated the TCP session. According to their feedback, if a response exceeds the 350-second threshold (as observed in the packet capture as 630 seconds), Amazon's ELB device sends a reset to the responding party (in this case, the server). The client scripts deployed by the developers did not receive the reset and mistakenly assumed the server connection was still active. Official recommendations for such problems include using TCP keepalive mechanisms to mitigate these problems.
 
