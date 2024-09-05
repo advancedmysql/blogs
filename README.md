@@ -30,6 +30,8 @@ Extract some insightful technical points from the book "The Art of Problem-Solvi
 
 [Lack of Durability: Paxos Not Committed to Disk](paxos_log.md)
 
+[How to Mitigate Performance Fluctuations in MySQL Group Replication?](group_replication_jitter.md)
+
 
 
 # Book Link:
