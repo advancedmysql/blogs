@@ -155,7 +155,7 @@ Regarding the probe mechanism, the following improvements have been made.
 
 With the implementation of the above mechanism, probing accuracy has been significantly enhanced. Combined with the forthcoming degradation mechanism, this ensures relatively stable throughput even under abnormal conditions.
 
-### 9.5.2 Leverage the Degradation Mechanism to Address Prolonged Waiting Problems
+## 1.2 Leverage the Degradation Mechanism to Address Prolonged Waiting Problems
 
 The degradation mechanism employs a majority-based approach to make decisions when a node becomes unresponsive after a short delay. While this mechanism is not new and is already part of Mencius interaction, MySQL has not effectively leveraged it to handle exceptional situations.
 
