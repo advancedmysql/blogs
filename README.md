@@ -32,6 +32,10 @@ Extract some insightful technical points from the book "The Art of Problem-Solvi
 
 [How to Mitigate Performance Fluctuations in MySQL Group Replication?](group_replication_jitter.md)
 
+[logical_reasoning_samples](logical_reasoning_samples.md)
+
+[TCPCopy Introduction](tcpcopy_introduction.md)
+
 
 
 # Book Link:
