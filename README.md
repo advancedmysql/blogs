@@ -34,7 +34,7 @@ Extract some insightful technical points from the book "The Art of Problem-Solvi
 
 [logical_reasoning_samples](logical_reasoning_samples.md)
 
-[Traditional Group Replication_vs_New Group Replication](new_group replication.md)
+[Traditional Group Replication vs New Group Replication](new_group replication.md)
 
 
 
