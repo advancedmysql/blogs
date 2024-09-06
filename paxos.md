@@ -34,7 +34,7 @@ Figure 1. Insights into the Mencius protocol from packet capture data.
 
 The green box in the figure indicates that the time interval between two consecutive Paxos instances reached 24ms. This suggests that the Mencius algorithm in MySQL is not aligned with a single Round-trip Time (RTT) in its implementation.
 
-Next, let's refer to the Mencius algorithm paper *"State Machine Replication for Wide Area Networks"* [54]. The specific details of the network testing environment are as follows:
+Next, let's refer to the Mencius algorithm paper *"State Machine Replication for Wide Area Networks"* [2]. The specific details of the network testing environment are as follows:
 
 ![](images/185beb2c6e0524d93abde3b25ecedc61.png)
 
@@ -70,11 +70,13 @@ From the figure, it's clear that Paxos skip optimization significantly improves 
 
 Paxos skip optimization reduces code complexity by an order of magnitude compared to Multi-Paxos implementations with a single leader. It also minimizes regression testing problems and simplifies maintenance.
 
-Overall, leveraging theoretical and logical solutions elegantly addresses this problem more effectively than the current native MySQL implementation [2].
+Overall, leveraging theoretical and logical solutions elegantly addresses this problem more effectively than the current native MySQL implementation [3].
 
 ## References：
 
 [1] Y. Mao, F. P. Junqueira, and K. Marzullo. Mencius: building efficient replicated state machines for WANs. In Proc. 8th USENIX OSDI, pages 369--384, San Diego, CA, Dec. 2008.
 
-[2] Bin Wang (2024). The Art of Problem-Solving in Software Engineering:How to Make MySQL Better.
+[2] Yanhua Mao. 2010. State Machine Replication for Wide Area Networks. Doctor of Philosophy in Computer Science. UNIVERSITY OF CALIFORNIA, SAN DIEGO.
+
+[3] Bin Wang (2024). The Art of Problem-Solving in Software Engineering:How to Make MySQL Better.
 
