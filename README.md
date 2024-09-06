@@ -36,6 +36,8 @@ Extract some insightful technical points from the book "The Art of Problem-Solvi
 
 [Traditional Group Replication vs New Group Replication](new_group_replication.md)
 
+[The Problems with Paxos Variant Algorithms in Group Replication](paxos.md)
+
 
 
 # Book Link:
