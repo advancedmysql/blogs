@@ -123,7 +123,7 @@ class ReadView {
 
 Furthermore, corresponding code modifications were made in the related interface functions, as changes to the data structure necessitate adjustments to the internal code within these functions.
 
-This new MVCC ReadView data structure can be seen as a hybrid data structure, as shown in the following figure  [3].
+This new MVCC ReadView data structure can be seen as a hybrid data structure, as shown in the following figure [3].
 
 ![](images/a54faa33502b8c17066b1e2af09bdbb0.png)
 
