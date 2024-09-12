@@ -158,7 +158,7 @@ Overall, while CATS shows some improvement in Pareto testing, it is less pronoun
 
 Database performance testing is inherently complex and error-prone [5]. It cannot be judged by data alone and requires thorough investigation to ensure logical consistency.
 
-## References：
+## References
 
 [1] B. Tian, J. Huang, B. Mozafari, and G. Schoenebeck. Contention-aware lock scheduling for transactional databases. PVLDB, 11(5), 2018.
 
