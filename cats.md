@@ -60,15 +60,11 @@ Contradictions often present valuable opportunities for in-depth problem analysi
 
 This time, testing on the improved MySQL 8.0.27 revealed significant bottlenecks under severe conflicts. The *perf* screenshot is shown in the following figure:
 
-![](images/f25b3e3bc94bed108b0c454413f79873.png)
-
-Figure 7. The *perf* screenshot highlighting deadlock problems.
-
-Based on the figure, the bottleneck seems to be related to deadlock problems. The MySQL error log file shows numerous error logs, with a partial screenshot provided below:
+This time, testing on the improved MySQL 8.0.27 revealed a large number of error logs in the MySQL error log file. Below is a partial screenshot:
 
 ![](images/4ca52ffeebc49306e76c74ed9062257d.png)
 
-Figure 8. Partial screenshot of numerous error logs.
+Figure 7. Partial screenshot of numerous error logs.
 
 Continuing the analysis of the corresponding code, the specifics are as follows:
 
@@ -108,14 +104,14 @@ From the code analysis, it's clear that deadlocks lead to a substantial amount o
 
 Given this context, several considerations emerge:
 
-1.  **Impact on Performance Testing:** The extensive error logs and the resulting disruptions could potentially skew the performance evaluation, leading to inaccurate assessments of the system's capabilities.
-2.  **Effectiveness of the CATS Algorithm:** The performance improvement of the CATS algorithm may need re-evaluation. If the extensive output of error logs significantly impacts performance, its actual effectiveness may not be as high as initially believed.
+1. **Impact on Performance Testing:** The extensive error logs and the resulting disruptions could potentially skew the performance evaluation, leading to inaccurate assessments of the system's capabilities.
+2. **Effectiveness of the CATS Algorithm:** The performance improvement of the CATS algorithm may need re-evaluation. If the extensive output of error logs significantly impacts performance, its actual effectiveness may not be as high as initially believed.
 
 Remove all logs from the **Deadlock_notifier::notify** function, recompile MySQL, and perform SysBench read-write tests under Pareto distribution. Details are provided in the following figure:
 
 <img src="images/image-20240829101534550.png" alt="image-20240829101534550" style="zoom:150%;" />
 
-Figure 9. Impact of CATS on throughput at various concurrency levels for improved MySQL 8.0.27 after eliminating interference.
+Figure 8. Impact of CATS on throughput at various concurrency levels for improved MySQL 8.0.27 after eliminating interference.
 
 From the figure, it is evident that there has been a significant change in throughput comparison. In scenarios with severe conflicts, the CATS algorithm slightly outperforms the FIFO algorithm, but the difference is minimal and much less pronounced than in previous tests. Note that these tests were conducted on the improved MySQL 8.0.27.
 
@@ -123,7 +119,7 @@ Let's conduct performance comparison tests on the improved MySQL 8.0.32, with de
 
 <img src="images/image-20240829101612063.png" alt="image-20240829101612063" style="zoom:150%;" />
 
-Figure 10. Impact of CATS on throughput at various concurrency levels for improved MySQL 8.0.32 after eliminating interference.
+Figure 9. Impact of CATS on throughput at various concurrency levels for improved MySQL 8.0.32 after eliminating interference.
 
 From the figure, it is evident that removing the interference results in only a slight performance difference. This small variation makes it understandable why the severity of FIFO scheduling problems may be difficult to notice. The perceived bias from CATS authors and MySQL officials likely stems from the extensive log output interference caused by deadlocks.
 
@@ -131,26 +127,26 @@ Using the same 32 warehouses as in the CATS algorithm paper, TPC-C tests were co
 
 <img src="images/image-20240829101632142.png" alt="image-20240829101632142" style="zoom:150%;" />
 
-Figure 11. Impact of CATS on throughput at different concurrency levels under NUMA after eliminating interference, according to the CATS paper.
+Figure 10. Impact of CATS on throughput at different concurrency levels under NUMA after eliminating interference, according to the CATS paper.
 
 From the figure, it's evident that the CATS algorithm performs worse than the FIFO algorithm. To avoid NUMA-related interference, MySQL was bound to NUMA node 0 for a new round of throughput versus concurrency tests.
 
 <img src="images/image-20240829101650730.png" alt="image-20240829101650730" style="zoom:150%;" />
 
-Figure 12. Impact of CATS on throughput at different concurrency levels under SMP after eliminating interference, according to the CATS paper.
+Figure 11. Impact of CATS on throughput at different concurrency levels under SMP after eliminating interference, according to the CATS paper.
 
 In this round of testing, the FIFO algorithm continued to outperform the CATS algorithm. The decline in performance of the CATS algorithm in BenchmarkSQL TPC-C testing compared to improvements in SysBench Pareto testing can be attributed to the following reasons:
 
-1.  **Additional Overhead**: The CATS algorithm inherently introduces some extra overhead.
-2.  **NUMA Environment Problems**: The CATS algorithm may not perform optimally in NUMA environments.
-3.  **Conflict Severity**: The conflict severity in TPC-C testing is less pronounced than in SysBench Pareto testing.
-4.  **Different Concurrency Scenarios**: SysBench creates concurrency scenarios that differ significantly from those in BenchmarkSQL.
+1. **Additional Overhead**: The CATS algorithm inherently introduces some extra overhead.
+2. **NUMA Environment Problems**: The CATS algorithm may not perform optimally in NUMA environments.
+3. **Conflict Severity**: The conflict severity in TPC-C testing is less pronounced than in SysBench Pareto testing.
+4. **Different Concurrency Scenarios**: SysBench creates concurrency scenarios that differ significantly from those in BenchmarkSQL.
 
 Finally, standard TPC-C testing was performed again with 1000 warehouses at varying concurrency levels. Specific details are shown in the following figure:
 
 <img src="images/image-20240829101712694.png" alt="image-20240829101712694" style="zoom:150%;" />
 
-Figure 13. Impact of CATS on BenchmarkSQL throughput after eliminating interference.
+Figure 12. Impact of CATS on BenchmarkSQL throughput after eliminating interference.
 
 From the figure, it is evident that there is little difference between the two algorithms in low-conflict scenarios. In other words, the CATS algorithm does not offer significant benefits in situations with fewer conflicts.
 
