@@ -24,12 +24,12 @@ The MySQL 8.0.27 release version already had this problem, whereas the earlier M
 commit 9a13c1c6971f4bd56d143179ecfb34cca8ecc018
 Author: Steinar H. Gunderson <steinar.gunderson@oracle.com>
 Date:   Tue Jun 8 15:14:35 2021 +0200
-    
+
     Bug #32976857: REMOVE QEP_TAB_STANDALONE [range optimizer, noclose]
-    
+
     Remove the QEP_TAB dependency from test_quick_select() (ie., the range
     optimizer).
-    
+
     Change-Id: Ie0fcce71dfc813920711c43c3d62635dae0d7d20
 ```
 
