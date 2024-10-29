@@ -129,7 +129,7 @@ From the figure, it is evident that this patch has significantly improved MySQL'
 
 Finally, let's examine the results of the long-term stability testing for TPC-C. The following figure shows the results of an 8-hour test under 100 concurrency, with throughput captured at various hours (where 1 ≤ n ≤ 8).
 
-<img src="images/image-20240829102722393.png" alt="image-20240829102722393" style="zoom:150%;" />
+<img src="images/image-degrade.png" alt="image-degrade" style="zoom:150%;" />
 
 Figure 13. Comparison of stability tests: MySQL 8.0.27 vs. improved MySQL 8.0.27.
 
