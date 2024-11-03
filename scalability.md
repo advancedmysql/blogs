@@ -1,6 +1,6 @@
 # How can the scalability of MySQL be improved？
 
-##  Current state of MySQL 5.7
+## Current state of MySQL 5.7
 
 MySQL 5.7 is not ideal in terms of scalability. The following figure illustrates the relationship between TPC-C throughput and concurrency in MySQL 5.7.39 under a specific configuration. This includes setting the transaction isolation level to Read Committed and adjusting the *innodb_spin_wait_delay* parameter to mitigate throughput degradation.
 
@@ -30,7 +30,7 @@ The first major improvement is redo log optimization [3].
 commit 6be2fa0bdbbadc52cc8478b52b69db02b0eaff40
 Author: Paweł Olchawa <pawel.olchawa@oracle.com>
 Date:   Wed Feb 14 09:33:42 2018 +0100
-    
+
     WL#10310 Redo log optimization: dedicated threads and concurrent log buffer.
 
     0. Log buffer became a ring buffer, data inside is no longer shifted.
@@ -76,7 +76,7 @@ A test comparing TPC-C throughput with different levels of concurrency before an
 
 Figure 3. Impact of redo log optimization under different concurrency levels.
 
-The results in the figure show a significant improvement in throughput at low concurrency levels.
+The results in the figure show a significant improvement in throughput at a concurrency level of 100.
 
 ### Optimizing Lock-Sys Through Latch Sharding
 
@@ -86,7 +86,7 @@ The second major improvement is lock-sys optimization [5].
 commit 1d259b87a63defa814e19a7534380cb43ee23c48
 Author: Jakub Łopuszański <jakub.lopuszanski@oracle.com>
 Date:   Wed Feb 5 14:12:22 2020 +0100
-    
+
     WL#10314 - InnoDB: Lock-sys optimization: sharded lock_sys mutex
 
     The Lock-sys orchestrates access to tables and rows. Each table, and each row,
@@ -95,19 +95,18 @@ Date:   Wed Feb 5 14:12:22 2020 +0100
     problems if the two operations conflict with each other, Lock-sys remembers
     lists of already GRANTED lock requests and checks new requests for conflicts in
     which case they have to start WAITING for their turn.
-    
+
     Lock-sys stores both GRANTED and WAITING lock requests in lists known as queues.
     To allow concurrent operations on these queues, we need a mechanism to latch
     these queues in safe and quick fashion.
-    
+
     In the past a single latch protected access to all of these queues.
     This scaled poorly, and the managment of queues become a bottleneck.
     In this WL, we introduce a more granular approach to latching.
-    
+
     Reviewed-by: Pawel Olchawa <pawel.olchawa@oracle.com>
     Reviewed-by: Debarun Banerjee <debarun.banerjee@oracle.com>
       RB:23836
-
 ```
 
 Based on the program before and after optimizing with lock-sys, using BenchmarkSQL to compare TPC-C throughput with concurrency, the specific results are as shown in the following figure:
@@ -126,9 +125,9 @@ The third major improvement is latch sharding for trx-sys.
 commit bc95476c0156070fd5cedcfd354fa68ce3c95bdb
 Author: Paweł Olchawa <pawel.olchawa@oracle.com>
 Date:   Tue May 25 18:12:20 2021 +0200
-    
+
     BUG#32832196 SINGLE RW_TRX_SET LEADS TO CONTENTION ON TRX_SYS MUTEX
-    
+
     1. Introduced shards, each with rw_trx_set and dedicated mutex.
     2. Extracted modifications to rw_trx_set outside its original critical sections
        (removal had to be extracted outside trx_erase_lists).
@@ -137,7 +136,7 @@ Date:   Tue May 25 18:12:20 2021 +0200
        fields to avoid risk of torn reads on egzotic platforms.
     5. Added assertions which ensure that thread operating on transaction has rights
        to do so (to show there is no possible race condition).
-    
+
     RB: 26314
     Reviewed-by: Jakub Łopuszański jakub.lopuszanski@oracle.com
 ```
@@ -205,4 +204,3 @@ Overall, it is entirely feasible for MySQL to maintain performance without colla
 [4] Xiangyao Yu. An evaluation of concurrency control with one thousand cores. PhD thesis, Massachusetts Institute of Technology, 2015.
 
 [5] https://dev.mysql.com/doc/refman/8.0/en/.
-
