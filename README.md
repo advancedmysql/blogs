@@ -1,15 +1,13 @@
 # Blogs
+
 Extract some insightful technical points from the book "The Art of Problem-Solving in Software Engineering:How to Make MySQL Better".
-
-
 
 # Professional Journey:
 
 [A Brief Overview of My Professional Journey](professional_journey.md)
 
-
-
 # Table of Contents
+
 [How can the scalability of MySQL be improved](scalability.md)
 
 [How to explain why Repeatable Read surprisingly outperforms Read Committed?](isolation.md)
@@ -38,15 +36,12 @@ Extract some insightful technical points from the book "The Art of Problem-Solvi
 
 [The Problems with Paxos Variant Algorithms in Group Replication](paxos.md)
 
-
-
 # Book Link:
 
-[The Art of Problem-Solving in Software Engineering:How to Make MySQL Better](https://github.com/advancedmysql/The-Art-of-Problem-Solving-in-Software-Engineering_How-to-Make-MySQL-Better).
-
-
+[The Art of Problem-Solving in Software Engineering:How to Make MySQL Better](https://github.com/enhancedformysql/The-Art-of-Problem-Solving-in-Software-Engineering_How-to-Make-MySQL-Better).
 
 # Errata
 
-If you find any errata in the book, [please open a new issue](https://github.com/advancedmysql/The-Art-of-Problem-Solving-in-Software-Engineering_How-to-Make-MySQL-Better/issues).
+If you find any errata in the book, [please open a new issue](https://github.com/enhancedformysql/The-Art-of-Problem-Solving-in-Software-Engineering_How-to-Make-MySQL-Better/issues).
+
 
